@@ -1,0 +1,29 @@
+
+myapp:1 (alpine 3.23.0)
+=======================
+Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
+
+Node.js (node-pkg)
+==================
+Total: 3 (UNKNOWN: 0, LOW: 1, MEDIUM: 0, HIGH: 2, CRITICAL: 0)
+
+┌────────────────────────────────┬────────────────┬──────────┬────────┬───────────────────┬─────────────────────────────┬───────────────────────────────────────────────────────────┐
+│            Library             │ Vulnerability  │ Severity │ Status │ Installed Version │        Fixed Version        │                           Title                           │
+├────────────────────────────────┼────────────────┼──────────┼────────┼───────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────┤
+│ brace-expansion (package.json) │ CVE-2025-5889  │ LOW      │ fixed  │ 2.0.1             │ 2.0.2, 1.1.12, 3.0.1, 4.0.1 │ brace-expansion: juliangruber brace-expansion index.js    │
+│                                │                │          │        │                   │                             │ expand redos                                              │
+│                                │                │          │        │                   │                             │ https://avd.aquasec.com/nvd/cve-2025-5889                 │
+├────────────────────────────────┼────────────────┼──────────┤        ├───────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────┤
+│ cross-spawn (package.json)     │ CVE-2024-21538 │ HIGH     │        │ 7.0.3             │ 7.0.5, 6.0.6                │ cross-spawn: regular expression denial of service         │
+│                                │                │          │        │                   │                             │ https://avd.aquasec.com/nvd/cve-2024-21538                │
+├────────────────────────────────┼────────────────┤          │        ├───────────────────┼─────────────────────────────┼───────────────────────────────────────────────────────────┤
+│ glob (package.json)            │ CVE-2025-64756 │          │        │ 10.4.2            │ 11.1.0, 10.5.0              │ glob: glob: Command Injection Vulnerability via Malicious │
+│                                │                │          │        │                   │                             │ Filenames                                                 │
+│                                │                │          │        │                   │                             │ https://avd.aquasec.com/nvd/cve-2025-64756                │
+└────────────────────────────────┴────────────────┴──────────┴────────┴───────────────────┴─────────────────────────────┴───────────────────────────────────────────────────────────┘
+
+
+# I got these vulnerabilities because I tried updating npm packages inside WSL, Windows blocked the file change and npm couldn’t update package.json [It is related to the WSL]
+
+.
