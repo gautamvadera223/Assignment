@@ -1,8 +1,8 @@
-name: Secure CI for Node Backend
+name: node-app-ci
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
 
 jobs:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v3
 
       - name: Setup Node.js
@@ -21,30 +21,28 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Static Code Analysis - Semgrep
+      - name: Semgrep Scan
         uses: returntocorp/semgrep-action@v1
         with:
           config: "p/ci"
-        continue-on-error: false
 
       - name: Build Docker Image
-        run: docker build -t secure-node-app:latest .
+        run: docker build -t node-app:latest .
 
-      - name: Container Image Scan - Trivy
+      - name: Trivy Scan
         uses: aquasecurity/trivy-action@master
         with:
-          image-ref: 'secure-node-app:latest'
-          severity: 'HIGH,CRITICAL'
-          exit-code: '1'
+          image-ref: "node-app:latest"
+          severity: "HIGH,CRITICAL"
+          exit-code: "1"
           ignore-unfixed: true
 
-      - name: DockerHub Login
+      - name: Docker Login
         if: success()
-        run: |
-          echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
+        run: echo "${{ secrets.DOCKER_PASS }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
 
-      - name: Push Secure Image to DockerHub
+      - name: Push Image
         if: success()
         run: |
-          docker tag secure-node-app:latest yourdockerid/secure-node-app:latest
-          docker push yourdockerid/secure-node-app:latest
+          docker tag node-app:latest gtm123/node-app:latest
+          docker push gtm123/node-app:latest
