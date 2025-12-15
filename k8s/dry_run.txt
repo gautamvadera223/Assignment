@@ -1,0 +1,4 @@
+deployment.apps/app created (dry run)
+ingress.networking.k8s.io/app-ingress created (dry run)
+networkpolicy.networking.k8s.io/deny-external created (dry run)
+service/app-service created (dry run)
