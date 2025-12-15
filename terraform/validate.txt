@@ -1,0 +1,12 @@
+[33m╷[0m[0m
+[33m│[0m [0m[1m[33mWarning: [0m[0m[1mDeprecated Resource[0m
+[33m│[0m [0m
+[33m│[0m [0m[0m  with module.eks.kubernetes_config_map.aws_auth,
+[33m│[0m [0m  on .terraform/modules/eks/aws_auth.tf line 65, in resource "kubernetes_config_map" "aws_auth":
+[33m│[0m [0m  65: resource "kubernetes_config_map" "aws_auth" [4m{[0m[0m
+[33m│[0m [0m
+[33m│[0m [0mDeprecated; use kubernetes_config_map_v1.
+[33m╵[0m[0m
+[32m[1mSuccess![0m The configuration is valid, but there were some
+validation warnings as shown above.
+[0m
